@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/linearLayout2"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".LocationActivity">
+
+<com.mapbox.mapboxsdk.maps.MapView
+    android:id="@+id/mapView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    mapbox:mapbox_cameraTargetLat="50.2649"
+    mapbox:mapbox_cameraTargetLng="10.9518"
+    mapbox:mapbox_cameraZoom="10">
+
+</com.mapbox.mapboxsdk.maps.MapView>
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<TextView
+    android:id="@+id/textView_searching"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:text="@string/searching_your_location"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+<ImageButton
+    android:id="@+id/exit_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:layout_marginEnd="30dp"
+    android:background="@null"
+    android:onClick="leave"
+    android:tint="#0F6F93"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+    android:contentDescription="@string/exit_icon" />
+
+<ImageButton
+    android:id="@+id/mylocation_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="30dp"
+    android:layout_marginBottom="30dp"
+    android:alpha="0.3"
+    android:background="@null"
+    android:onClick="goToMyLocation"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:srcCompat="@drawable/mylocation_icon"
+    mapbox:layout_constraintEnd_toEndOf="parent"
+    android:contentDescription="@string/mylocation_icon" />
+
+<Button
+    android:id="@+id/btn_usepin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30dp"
+    android:alpha="0.3"
+    android:enabled="false"
+    android:onClick="setLocation"
+    android:padding="10dp"
+    android:text="@string/use_this_location"
+    android:textColor="#FFFFFF"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

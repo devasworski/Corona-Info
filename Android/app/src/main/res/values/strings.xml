@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Corona-Info</string>
+
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="searching_your_location">Searching for your Location</string>
+    <string name="exit_icon">exit_icon</string>
+    <string name="mylocation_icon">my_location_icon</string>
+    <string name="use_this_location">Select Location</string>
+</resources>
