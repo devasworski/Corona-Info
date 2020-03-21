@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEF0F5"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/cases_box"
+        android:layout_width="394dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        app:srcCompat="@drawable/cases_rectangle" />
+
+    <ImageView
+        android:id="@+id/Header"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/app_name_rectangle" />
+
+    <ImageView
+        android:id="@+id/death_box"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="@+id/cases_box"
+        app:layout_constraintTop_toTopOf="@+id/rate_box"
+        app:srcCompat="@drawable/tote_rectangle" />
+
+    <ImageView
+        android:id="@+id/rate_box"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="@+id/cases_box"
+        app:layout_constraintTop_toTopOf="@+id/cases_box"
+        app:srcCompat="@drawable/rate_rectangle" />
+
+    <ImageView
+        android:id="@+id/country_box"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/cases_box"
+        app:layout_constraintStart_toStartOf="@+id/cases_box"
+        app:layout_constraintTop_toTopOf="@+id/rate_box"
+        app:srcCompat="@drawable/ort_rectangle"/>
+
+    <ImageView
+        android:id="@+id/Info_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:onClick="goToInfoActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/info" />
+
+    <TextView
+        android:id="@+id/Source_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:autoLink="web"
+        android:clickable="false"
+        android:text="@string/source"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country_box" />
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="@style/corona_info"
+        app:layout_constraintBottom_toTopOf="@+id/cases_box"
+        app:layout_constraintEnd_toEndOf="@+id/Header"
+        app:layout_constraintStart_toStartOf="@+id/Header"
+        app:layout_constraintTop_toTopOf="@+id/Header" />
+
+    <TextView
+        android:id="@+id/cases_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fälle: NA"
+        android:textAppearance="@style/cases"
+        app:layout_constraintBottom_toBottomOf="@+id/cases_box"
+        app:layout_constraintEnd_toEndOf="@+id/cases_box"
+        app:layout_constraintStart_toStartOf="@+id/cases_box"
+        app:layout_constraintTop_toTopOf="@+id/cases_box" />
+
+    <TextView
+        android:id="@+id/death_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Todesfälle: NA"
+        android:textAppearance="@style/death"
+        app:layout_constraintBottom_toBottomOf="@+id/death_box"
+        app:layout_constraintEnd_toEndOf="@+id/death_box"
+        app:layout_constraintStart_toStartOf="@+id/death_box"
+        app:layout_constraintTop_toTopOf="@+id/death_box" />
+
+    <TextView
+        android:id="@+id/rate_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sterberate: NA"
+        android:textAppearance="@style/rate"
+        app:layout_constraintBottom_toBottomOf="@+id/rate_box"
+        app:layout_constraintEnd_toEndOf="@+id/rate_box"
+        app:layout_constraintStart_toStartOf="@+id/rate_box"
+        app:layout_constraintTop_toTopOf="@+id/rate_box" />
+
+    <TextView
+        android:id="@+id/country_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NA"
+        android:textAppearance="@style/ort"
+        app:layout_constraintBottom_toBottomOf="@+id/country_box"
+        app:layout_constraintEnd_toEndOf="@+id/country_box"
+        app:layout_constraintStart_toStartOf="@+id/country_box"
+        app:layout_constraintTop_toTopOf="@+id/country_box" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

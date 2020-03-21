@@ -1,0 +1,97 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="corona_info">
+
+        <item name="android:textSize">
+            28sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.02
+        </item>
+
+        <item name="android:textColor">
+            #686868
+        </item>
+
+    </style>
+
+    <style name="cases">
+
+        <item name="android:textSize">
+            28sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.02
+        </item>
+
+        <item name="android:textColor">
+            #686868
+        </item>
+
+    </style>
+
+    <style name="death">
+
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.02
+        </item>
+
+        <item name="android:textColor">
+            #EB1717
+        </item>
+
+    </style>
+
+    <style name="rate">
+
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.02
+        </item>
+
+        <item name="android:textColor">
+            #3F9E1D
+        </item>
+
+    </style>
+
+    <style name="ort">
+
+        <item name="android:textSize">
+            28sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.02
+        </item>
+
+        <item name="android:textColor">
+            #686868
+        </item>
+
+    </style>
+
+
+</resources>
