@@ -115,7 +115,9 @@ class MainActivity : AppCompatActivity() {
         this.attributes = attributes
     }
 
-    fun goToInfoActivity(view: View) {}
+    fun goToInfoActivity(view: View) {
+        startActivity(Intent(this,InfoActivity::class.java))
+    }
 
 
     private fun checkPermission(permissionArray: Array<String>): Boolean {
