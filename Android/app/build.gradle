@@ -35,6 +35,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation("com.squareup.okhttp3:okhttp:4.4.0")
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.0.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-markerview-v8:0.3.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v8:0.7.0'
 }

@@ -130,12 +130,22 @@
         android:id="@+id/country_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nürnberg"
+        android:text="NA"
+        android:textAppearance="@style/ort"
         app:layout_constraintBottom_toBottomOf="@+id/country_box"
         app:layout_constraintEnd_toEndOf="@+id/country_box"
         app:layout_constraintStart_toStartOf="@+id/country_box"
-        app:layout_constraintTop_toTopOf="@+id/country_box"
-        android:textAppearance="@style/ort"/>
+        app:layout_constraintTop_toTopOf="@+id/country_box" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
