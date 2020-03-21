@@ -43,48 +43,5 @@ tools:context=".LocationActivity">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
-<ImageButton
-    android:id="@+id/exit_btn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    android:layout_marginEnd="30dp"
-    android:background="@null"
-    android:onClick="leave"
-    android:tint="#0F6F93"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-    android:contentDescription="@string/exit_icon" />
-
-<ImageButton
-    android:id="@+id/mylocation_btn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="30dp"
-    android:layout_marginBottom="30dp"
-    android:alpha="0.3"
-    android:background="@null"
-    android:onClick="goToMyLocation"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:srcCompat="@drawable/mylocation_icon"
-    mapbox:layout_constraintEnd_toEndOf="parent"
-    android:contentDescription="@string/mylocation_icon" />
-
-<Button
-    android:id="@+id/btn_usepin"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="30dp"
-    android:alpha="0.3"
-    android:enabled="false"
-    android:onClick="setLocation"
-    android:padding="10dp"
-    android:text="@string/use_this_location"
-    android:textColor="#FFFFFF"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

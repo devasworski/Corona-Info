@@ -65,17 +65,9 @@ class LocationActivity : AppCompatActivity() {
      */
     private lateinit var map: MapboxMap
     /**
-     * Boolean if the Marker and Map Camera should follow the location of the Phone
-     */
-    private var followLocation: Boolean = true
-    /**
      * Manages the Marker on the Map
      */
     private lateinit var markerViewManager: MarkerViewManager
-    /**
-     * Currently selected Location on the Map
-     */
-    private lateinit var selectedLocation: Location
     /**
      * the Location of this device
      */
@@ -108,10 +100,6 @@ class LocationActivity : AppCompatActivity() {
             }
             map = mapboxMap
             markerViewManager = MarkerViewManager(mapView, map)
-            map.addOnMapClickListener { point ->
-                onMapClick(point)
-                true
-            }
         }
 
     }
@@ -189,63 +177,11 @@ class LocationActivity : AppCompatActivity() {
     }
 
     /**
-     * Updates the position of the Location Marker on the Map
-     * @param latitude The latitude where the marker should appear
-     * @param longitude The longitude where the marker should appear
-     */
-    private fun updateSelectedLocation(latitude: Double,longitude: Double){
-        selectedLocation.longitude=longitude
-        selectedLocation.latitude=latitude
-    }
-
-    /**
-     * Updates the currently selected Location [selectedLocation] on the Map
-     * @param location the selected Location
-     */
-    private fun updateSelectedLocation(location: Location){
-        selectedLocation=location
-    }
-
-    /**
      * Intent called by [goToMyLocation], which updates the camera position on the [map] by a Location
      * @param location the selected location
      */
     private fun setCameraPosition(location:Location){
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,location.longitude),18.0))
-        updateSelectedLocation(location)
-    }
-
-    /**
-     * Intent called by [onMapClick], which updates the camera position on the [map] by latitude and longitude
-     * @param latitude The latitude of the new camera position
-     * @param longitude The longitude of the new camera position
-     */
-    private fun setCameraPosition(latitude: Double,longitude: Double){
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude,longitude),18.0))
-        updateSelectedLocation(latitude,longitude)
-    }
-
-    /**
-     * Intent called by [mapView] when clicked on the map
-     * @param point The point where clicked on the map
-     */
-    private fun onMapClick(point: LatLng){
-        if(inizialised) {
-            followLocation = false
-            setCameraPosition(point.latitude, point.longitude)
-            marker?.setLatLng(point)
-        }
-    }
-
-    /**
-     * Intent called by the mylocation_btn
-     * Set [followLocation] to true
-     * Calls [setCameraPosition] and set the camera position the gps location
-     * @param view the View Element, that calls this Method
-     */
-    fun goToMyLocation(view: View) {
-        followLocation = true
-        setCameraPosition(myLocation)
     }
 
     //endregion
@@ -260,19 +196,14 @@ class LocationActivity : AppCompatActivity() {
      * @param location the  current gps location
      */
     private fun onGotLocation(location: Location) {
-        progressBar.isVisible=false
-        textView_searching.isVisible=false
+        progressBar.isVisible = false
+        textView_searching.isVisible = false
         myLocation = location
-        btn_usepin.isEnabled=true
-        btn_usepin.alpha=1.0f
-        mylocation_btn.isEnabled=true
-        mylocation_btn.alpha=1.0f
-        if(!inizialised)
-            inizialiseMarker(location.latitude,location.longitude)
-        inizialised=true
-        if(followLocation) {
-            setCameraPosition(location)
-        }
+        if (!inizialised)
+            inizialiseMarker(location.latitude, location.longitude)
+        inizialised = true
+        setCameraPosition(location)
+        setLocation()
     }
 
     /**
@@ -283,14 +214,6 @@ class LocationActivity : AppCompatActivity() {
         this.finish()
     }
 
-    /**
-     * Called when exit_btn clicked and closes the intent and goes back to [AddDeviceActivity]
-     * @param view the View Element, that calls this Method
-     */
-    fun leave(view: View) {
-        this.setResult(Activity.RESULT_CANCELED)
-        this.finish()
-    }
 
     /**
      * Starts the Location listener
@@ -363,13 +286,13 @@ class LocationActivity : AppCompatActivity() {
     //endregion
 
     /**
-     * Set the [selectedLocation] as [IoTDeviceInfos.location]
+     *
      * Exits the Activity with resultcode RESULT_OK
      * @param view the View Element, that calls this Method
      */
-    fun setLocation(view: View) {
-        MainActivity.lat=selectedLocation.latitude.toString()
-        MainActivity.long=selectedLocation.longitude.toString()
+    fun setLocation() {
+        MainActivity.lat=myLocation.latitude.toString()
+        MainActivity.long=myLocation.longitude.toString()
         this.setResult(Activity.RESULT_OK)
         this.finish()
     }

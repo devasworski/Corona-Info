@@ -33,25 +33,37 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(Intent(this, LocationActivity::class.java), LOCATION_REQUEST)
     }
 
+    /**
+     * Loads the obtained values into the View
+     */
     fun SetView(){
         country_text.text = attributes.getString("GEN")
         cases_text.text = "Fälle: ${attributes.getString("cases")}"
         death_text.text = "Todesfälle: ${attributes.getString("deaths")}"
-        rate_text.text = "Rate: ${attributes.getString("death_rate")}%"
+        rate_text.text = "Sterberate: ${attributes.getString("death_rate")}%"
     }
 
+    /**
+     * called after the MapView closes
+     *
+     * @param requestCode contains the requestcode, which called the activity
+     * @param resultCode shows if the Activity has been executed successfully
+     * @param data the Nullable Intent
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         // Check which request we're responding to
         if (requestCode == LOCATION_REQUEST) {
             // Make sure the request was successful
             if (resultCode == Activity.RESULT_OK) {
-                Toast.makeText(this, "Got Location", Toast.LENGTH_LONG).show()
                 CallAPI()
             }
         }
     }
 
+    /**
+     * Calls the API from [https://npgeo-corona-npgeo-de.hub.arcgis.com/]
+     */
     fun CallAPI() {
 
         var Uri =
@@ -82,6 +94,11 @@ class MainActivity : AppCompatActivity() {
         SetView()
     }
 
+    /**
+     * Interpretes the Response JSON
+     *
+     * @param json response JSON Object
+     */
     fun interpretJSON(json: JSONObject){
         var features = json.getJSONArray("features")
         var featuresarray = features.getJSONObject(0)
