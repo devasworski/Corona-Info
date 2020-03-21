@@ -97,34 +97,34 @@
         android:id="@+id/cases_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fälle: 67"
+        android:text="Fälle: NA"
+        android:textAppearance="@style/cases"
         app:layout_constraintBottom_toBottomOf="@+id/cases_box"
         app:layout_constraintEnd_toEndOf="@+id/cases_box"
         app:layout_constraintStart_toStartOf="@+id/cases_box"
-        app:layout_constraintTop_toTopOf="@+id/cases_box"
-        android:textAppearance="@style/cases" />
+        app:layout_constraintTop_toTopOf="@+id/cases_box" />
 
     <TextView
         android:id="@+id/death_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Todesfälle: 8"
+        android:text="Todesfälle: NA"
+        android:textAppearance="@style/death"
         app:layout_constraintBottom_toBottomOf="@+id/death_box"
         app:layout_constraintEnd_toEndOf="@+id/death_box"
         app:layout_constraintStart_toStartOf="@+id/death_box"
-        app:layout_constraintTop_toTopOf="@+id/death_box"
-        android:textAppearance="@style/death"/>
+        app:layout_constraintTop_toTopOf="@+id/death_box" />
 
     <TextView
         android:id="@+id/rate_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rate: 0,008%"
+        android:text="Rate: NA"
+        android:textAppearance="@style/rate"
         app:layout_constraintBottom_toBottomOf="@+id/rate_box"
         app:layout_constraintEnd_toEndOf="@+id/rate_box"
         app:layout_constraintStart_toStartOf="@+id/rate_box"
-        app:layout_constraintTop_toTopOf="@+id/rate_box"
-        android:textAppearance="@style/rate"/>
+        app:layout_constraintTop_toTopOf="@+id/rate_box" />
 
     <TextView
         android:id="@+id/country_text"

@@ -34,7 +34,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun SetView(){
-        //Textmain.text=attributes.getString("cases")
+        country_text.text = attributes.getString("GEN")
+        cases_text.text = "Fälle: ${attributes.getString("cases")}"
+        death_text.text = "Todesfälle: ${attributes.getString("deaths")}"
+        rate_text.text = "Rate: ${attributes.getString("death_rate")}%"
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
