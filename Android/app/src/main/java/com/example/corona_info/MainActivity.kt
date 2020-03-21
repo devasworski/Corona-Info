@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun SetView(){
-        Textmain.text=attributes.getString("cases")
+        //Textmain.text=attributes.getString("cases")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -84,5 +85,7 @@ class MainActivity : AppCompatActivity() {
         var attributes = featuresarray.getJSONObject("attributes")
         this.attributes = attributes
     }
+
+    fun goToInfoActivity(view: View) {}
 
 }
