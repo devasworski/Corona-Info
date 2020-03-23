@@ -65,7 +65,11 @@ class MainActivity : AppCompatActivity() {
         country_text.text = attributes.getString("GEN")
         cases_text.text = "Fälle: ${attributes.getString("cases")}"
         death_text.text = "Todesfälle: ${attributes.getString("deaths")}"
-        rate_text.text = "Sterberate: ${attributes.getString("death_rate")}%"
+        // death rate may be to long to be displayed. Therfore it will be trimmed to show max 6 chars (one character is the dot)
+        var deathRateOriginal = attributes.getString("death_rate")
+        var deathRate = if((deathRateOriginal.length > 6)) { "~${deathRateOriginal.substring(0,6)}" }else{ deathRateOriginal}
+        rate_text.text = "Sterberate: ${deathRate}%"
+
         progressBar.isVisible=false
     }
 
