@@ -8,3 +8,4 @@ Alle in der App dargestellten Daten werden unverändert von der <a href="https:/
 ### Google Drive Download:
 <a href="https://drive.google.com/file/d/19Mip_AKfOhN3BAjnMCMwfTrDO9Y5dVlG/view?usp=sharing"><img src="http://dev-sworski.com/wp-content/uploads/2020/03/GDrive_Download.png" height=50></a>
 
+<img src="http://dev-sworski.com/wp-content/uploads/2020/03/qr-code.png" height=180>
