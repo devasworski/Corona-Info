@@ -106,8 +106,11 @@
 
     <TextView
         android:id="@+id/death_text"
-        android:layout_width="wrap_content"
+        android:layout_width="132dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:maxLines="2"
         android:text="Todesfälle: NA"
         android:textAppearance="@style/death"
         app:layout_constraintBottom_toBottomOf="@+id/death_box"
@@ -117,14 +120,19 @@
 
     <TextView
         android:id="@+id/rate_text"
-        android:layout_width="wrap_content"
+        android:layout_width="131dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:maxLines="2"
+        android:singleLine="false"
         android:text="Sterberate: NA"
         android:textAppearance="@style/rate"
         app:layout_constraintBottom_toBottomOf="@+id/rate_box"
         app:layout_constraintEnd_toEndOf="@+id/rate_box"
         app:layout_constraintStart_toStartOf="@+id/rate_box"
         app:layout_constraintTop_toTopOf="@+id/rate_box" />
+
 
     <TextView
         android:id="@+id/country_text"
