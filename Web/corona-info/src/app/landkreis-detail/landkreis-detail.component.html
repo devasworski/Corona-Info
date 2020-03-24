@@ -1,0 +1,26 @@
+<div
+    style="margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;"
+    *ngFor="let landkreis of data$ | async; let i = index"
+>
+    <h2>
+        {{ landkreis.attributes.BEZ }} {{ landkreis.attributes.GEN }}
+    </h2>
+    <div style="display: flex; flex-direction: row; justify-content:space-around">
+        <div style="color: #9e3d70;">
+            {{landkreis.attributes.cases}} bestätigte Fälle
+        </div>
+        <div style="color: #0088a0;">
+            {{ landkreis.attributes.deaths }} gestorben
+        </div>
+    </div>
+    <div style="margin-top: 1rem; display: flex; flex-direction: row; justify-content:space-around">
+        <div>
+            {{ landkreis.attributes.cases_per_population / 100 | percent: '1.3' }} betroffen
+        </div>
+        <div>
+            {{ landkreis.attributes.cases_per_100k.toString().substring(0,4) }} Fälle pro 100.000
+        </div>
+    </div>
+</div>
