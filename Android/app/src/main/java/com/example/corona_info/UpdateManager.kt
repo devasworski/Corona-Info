@@ -45,9 +45,7 @@ class UpdateManager {
     private fun checkForUpdates(response: Response){
         val GithubLatestReleaseJSON = JSONObject(response.body?.string().toString())
         val GithubLatestReleaseVersionCode = getGithubLatestReleaseVersionCode(GithubLatestReleaseJSON)
-        if(thisVersionCode < GithubLatestReleaseVersionCode){
-            downloadUpdate(GithubLatestReleaseJSON.getString("assets_url"))
-        }
+        if(thisVersionCode < GithubLatestReleaseVersionCode) try {downloadUpdate(GithubLatestReleaseJSON.getString("assets_url")) } catch (e: Exception){ /*No Update Files available*/}
     }
 
     private fun getGithubLatestReleaseVersionCode(json: JSONObject):Int{
