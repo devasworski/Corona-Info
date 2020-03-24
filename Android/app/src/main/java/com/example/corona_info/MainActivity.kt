@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Array of permissions required in this Activity
      */
-    private var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+    private var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
 
     companion object Location{
@@ -55,8 +55,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (checkPermission(permissions)) { getLocation() } else { requestPermissions(permissions, PERMISSION_REQUEST) }
-        UpdateManager(this).getLatestRealease()
+        if (checkPermission(permissions)) { getLocation(); UpdateManager(this).getLatestRealease()} else { requestPermissions(permissions, PERMISSION_REQUEST) }
     }
 
     /**
@@ -156,6 +155,7 @@ class MainActivity : AppCompatActivity() {
             }
             if (allSuccess)
                 getLocation()
+                UpdateManager(this).getLatestRealease()
 
         }
     }
@@ -178,18 +178,9 @@ class MainActivity : AppCompatActivity() {
                             locationManager.removeUpdates(this)
                         }
                     }
-
-                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onProviderEnabled(provider: String?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onProviderDisabled(provider: String?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
+                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
+                    override fun onProviderEnabled(provider: String?) {}
+                    override fun onProviderDisabled(provider: String?) {}
                 })
 
         } else {
