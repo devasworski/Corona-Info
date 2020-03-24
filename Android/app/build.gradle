@@ -11,8 +11,8 @@ android {
         applicationId 'com.corona_info'
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 10
+        versionName "v1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

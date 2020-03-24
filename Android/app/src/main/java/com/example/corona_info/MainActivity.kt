@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         if (checkPermission(permissions)) { getLocation() } else { requestPermissions(permissions, PERMISSION_REQUEST) }
+        UpdateManager(this).getLatestRealease()
     }
 
     /**
