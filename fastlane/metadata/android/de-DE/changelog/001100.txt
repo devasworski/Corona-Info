@@ -1,0 +1,2 @@
+- The death_rate text-view is now limited to it's box and won't cover the death box
+- readme.me has been updated to link the new version in the download section
