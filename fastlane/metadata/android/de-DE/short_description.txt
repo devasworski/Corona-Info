@@ -1,0 +1,1 @@
+Zeigt die aktuelle Anzahl von Fällen im über GPS ermittelten Landkreis an

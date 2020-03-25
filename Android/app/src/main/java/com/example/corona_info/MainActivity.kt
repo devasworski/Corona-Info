@@ -3,14 +3,17 @@ package com.example.corona_info
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationListener
 import android.location.LocationManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -23,10 +26,6 @@ import org.json.JSONObject
  * the requestcode for calling the permission to access the gps location
  */
 private const val PERMISSION_REQUEST = 10
-/**
- * the requestcode for calling the [LocationActivity] to get the current gps location
- */
-private const val LOCATION_REQUEST = 101
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,7 +54,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (checkPermission(permissions)) { getLocation() } else { requestPermissions(permissions, PERMISSION_REQUEST) }
+        if (checkPermission(permissions)) { getLocation(); } else { requestPermissions(permissions, PERMISSION_REQUEST) }
+        openUpdatePopup(UpdateManager(this).getLatestRelease())
     }
 
     /**
@@ -71,6 +71,21 @@ class MainActivity : AppCompatActivity() {
         rate_text.text = "Sterberate: ${deathRate}%"
 
         progressBar.isVisible=false
+    }
+
+    fun openUpdatePopup(UrlAPK:String) {
+        if(UrlAPK!="NA") {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Es ist ein Update verfügbar")
+            builder.setMessage("Soll das Update installiert werden?")
+            builder.setPositiveButton("Installieren") { dialog, _ ->
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(UrlAPK)))
+            }
+            builder.setNegativeButton("Später") { dialog, _ ->
+                dialog.cancel()
+            }
+            builder.show()
+        }
     }
 
     /**
@@ -177,18 +192,9 @@ class MainActivity : AppCompatActivity() {
                             locationManager.removeUpdates(this)
                         }
                     }
-
-                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onProviderEnabled(provider: String?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onProviderDisabled(provider: String?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
+                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
+                    override fun onProviderEnabled(provider: String?) {}
+                    override fun onProviderDisabled(provider: String?) {}
                 })
 
         } else {

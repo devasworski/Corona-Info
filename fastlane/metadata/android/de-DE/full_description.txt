@@ -1,0 +1,5 @@
+Die App zeigt die aktuelle Anzahl von Fällen im über GPS ermittelten Landkreis an.
+
+Alle in der App dargestellten Daten werden unverändert von der Nationale Plattform für geographische Daten (NPGEO-DE) erhoben und über die bereitgestellte API Schnittstelle abgerufen.
+
+Es wird keine Gewähr für die Richtigkeit der Daten vom Entwickler übernommen.
