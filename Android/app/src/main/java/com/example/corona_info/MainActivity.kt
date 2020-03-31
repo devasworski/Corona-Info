@@ -38,9 +38,13 @@ class MainActivity : AppCompatActivity() {
      */
     private var hasGps = false
     /**
+     * Boolean if Network location signal is availiabe
+     */
+    private var hasNetwork = false
+    /**
      * Array of permissions required in this Activity
      */
-    private var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+    private var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
 
 
     companion object Location{
@@ -178,24 +182,53 @@ class MainActivity : AppCompatActivity() {
     private fun getLocation() {
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         hasGps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        if (hasGps) {
-            locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
-                5000,
-                0F,
-                object : LocationListener {
-                    override fun onLocationChanged(location: android.location.Location?) {
-                        if (location != null) {
-                            lat=location.latitude.toString()
-                            long=location.longitude.toString()
-                            CallAPI()
-                            locationManager.removeUpdates(this)
+        hasNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        if (hasGps || hasNetwork) {
+            if (hasGps) {
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    5000,
+                    0F,
+                    object : LocationListener {
+                        override fun onLocationChanged(location: android.location.Location?) {
+                            if (location != null) {
+                                lat = location.latitude.toString()
+                                long = location.longitude.toString()
+                                CallAPI()
+                                locationManager.removeUpdates(this)
+                            }
                         }
-                    }
-                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
-                    override fun onProviderEnabled(provider: String?) {}
-                    override fun onProviderDisabled(provider: String?) {}
-                })
+                        override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
+                        override fun onProviderEnabled(provider: String?) {}
+                        override fun onProviderDisabled(provider: String?) {}
+                    })
+            }
+            if (hasNetwork) {
+                locationManager.requestLocationUpdates(
+                    LocationManager.NETWORK_PROVIDER,
+                    5000,
+                    0F,
+                    object : LocationListener {
+                        override fun onLocationChanged(location: android.location.Location?) {
+                            if (location != null) {
+                                lat = location.latitude.toString()
+                                long = location.longitude.toString()
+                                CallAPI()
+                                locationManager.removeUpdates(this)
+                            }
+                        }
+
+                        override fun onStatusChanged(
+                            provider: String?,
+                            status: Int,
+                            extras: Bundle?
+                        ) {
+                        }
+
+                        override fun onProviderEnabled(provider: String?) {}
+                        override fun onProviderDisabled(provider: String?) {}
+                    })
+            }
 
         } else {
             Toast.makeText(this, "GPS Deactivated", Toast.LENGTH_LONG).show()
