@@ -7,6 +7,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
@@ -178,6 +179,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private val locationListener = object : LocationListener {
+        override fun onLocationChanged(location: android.location.Location?) {
+            if (location != null) {
+                lat = location.latitude.toString()
+                long = location.longitude.toString()
+                CallAPI()
+                locationManager.removeUpdates(this)
+            }
+        }
+
+        override fun onStatusChanged(
+            provider: String?,
+            status: Int,
+            extras: Bundle?
+        ) {
+        }
+
+        override fun onProviderEnabled(provider: String?) {}
+        override fun onProviderDisabled(provider: String?) {}
+    }
+
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -188,46 +210,13 @@ class MainActivity : AppCompatActivity() {
                 locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
                     5000,
-                    0F,
-                    object : LocationListener {
-                        override fun onLocationChanged(location: android.location.Location?) {
-                            if (location != null) {
-                                lat = location.latitude.toString()
-                                long = location.longitude.toString()
-                                CallAPI()
-                                locationManager.removeUpdates(this)
-                            }
-                        }
-                        override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
-                        override fun onProviderEnabled(provider: String?) {}
-                        override fun onProviderDisabled(provider: String?) {}
-                    })
+                    0F, locationListener)
             }
             if (hasNetwork) {
                 locationManager.requestLocationUpdates(
                     LocationManager.NETWORK_PROVIDER,
                     5000,
-                    0F,
-                    object : LocationListener {
-                        override fun onLocationChanged(location: android.location.Location?) {
-                            if (location != null) {
-                                lat = location.latitude.toString()
-                                long = location.longitude.toString()
-                                CallAPI()
-                                locationManager.removeUpdates(this)
-                            }
-                        }
-
-                        override fun onStatusChanged(
-                            provider: String?,
-                            status: Int,
-                            extras: Bundle?
-                        ) {
-                        }
-
-                        override fun onProviderEnabled(provider: String?) {}
-                        override fun onProviderDisabled(provider: String?) {}
-                    })
+                    0F, locationListener)
             }
 
         } else {
