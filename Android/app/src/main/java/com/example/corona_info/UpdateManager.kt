@@ -63,7 +63,6 @@ class UpdateManager {
             if(GithubAssetsJSON.getJSONObject(i).getString("name").endsWith(".apk")){
                 UrlAPK = GithubAssetsJSON.getJSONObject(i).getString("browser_download_url")
                 return UrlAPK
-                break
             }
         }
         return "NA"

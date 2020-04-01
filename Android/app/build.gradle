@@ -11,8 +11,8 @@ android {
         applicationId 'com.corona_info'
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 12
-        versionName "v1.2"
+        versionCode 13
+        versionName "v1.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,5 +34,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation("com.squareup.okhttp3:okhttp:4.4.0")
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.0.0'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
 }
