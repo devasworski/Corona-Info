@@ -1,13 +1,10 @@
 package com.example.corona_info
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.LocationListener
-import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -115,7 +112,7 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Es ist ein Update verfügbar")
         builder.setMessage("Soll das Update installiert werden?")
-        builder.setPositiveButton("Installieren") { dialog, _ ->
+        builder.setPositiveButton("Installieren") { _, _ ->
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(UrlAPK)))
         }
         builder.setNegativeButton("Später") { dialog, _ ->
@@ -215,10 +212,5 @@ class MainActivity : AppCompatActivity() {
     }
 
     //endregion
-
-    //region Lifecycle
-
-    //endregion
-
 
 }
